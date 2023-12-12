@@ -40,9 +40,6 @@ public class CustomArrayList<T> implements CustomList {
 		Object[] newArray = new Object[items.length];
 		int i = 0;
 		for(Object element : items) {
-			if(items[i] == null) {
-				break;
-			}
 			if(i < index) {
 				newArray[i] = items[i];
 				i++;
