@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 public class CustomArrayList<T> implements CustomList {
 
 	Object[] items = new Object[10];
+	Object[] newItems = new Object[items.length];
 	private int size = 0;
 
 	@Override
@@ -37,17 +38,16 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public Object remove(int index) throws IndexOutOfBoundsException {
-		Object[] newArray = new Object[items.length];
 		int i = 0;
-		for(Object element : items) {
-			if(i < index) {
-				newArray[i] = items[i];
+		for (Object element : items) {
+			if (i < index) {
+				newItems[i] = items[i];
 				i++;
 			} else {
-				newArray[i] = items[i + 1];
+				newItems[i] = items[i + 1];
 			}
 		}
-		items = newArray;
+		items = newItems;
 		return items[index];
 	}
 
@@ -67,23 +67,21 @@ public class CustomArrayList<T> implements CustomList {
 		}
 	}
 
-	// Method to shift elements with index >= index parameter, index + 1
-	private Object[] shiftArrayToRightAtIndex(int index, Object item) {
-		Object[] newArray = new Object[items.length];
-		for (int i = 0; i <= items.length - 1; i++) {
-			if (items[i] == null) {
-				break;
-			} else if (i == index) {
-				newArray[i + 1] = items[i];
-				newArray[i] = item;
+	// Method to shift elements to right with index >= index parameter
+	private void shiftArrayToRightAtIndex(int index, Object item) {
+		int i = 0;
+		while (items[i] != null) {
+			if (i == index) {
+				newItems[i + 1] = items[i];
+				newItems[i] = item;
 			} else if (i < index) {
-				newArray[i] = items[i];
+				newItems[i] = items[i];
 			} else {
-				newArray[i + 1] = items[i];
+				newItems[i + 1] = items[i];
 			}
+			i++;
 		}
-		items = newArray;
-		return items;
+		items = newItems;
 	}
 
 }
