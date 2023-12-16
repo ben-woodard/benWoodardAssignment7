@@ -18,6 +18,8 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public boolean add(int index, Object item) throws IndexOutOfBoundsException {
+		size += 1;
+		if
 		if (items[index] != null) {
 			shiftArrayToRightAtIndex(index, item);
 		} else {
@@ -38,17 +40,26 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public Object remove(int index) throws IndexOutOfBoundsException {
-		int i = 0;
-		for (Object element : items) {
+		items[index] = null;
+		adjustForNull(index);	
+		size -= 1;
+		return items[index];
+	}
+
+	//adjusting for null values in remove method
+	private Object adjustForNull(int index) {
+		for (int i = 0; i < items.length; i++) {
 			if (i < index) {
 				newItems[i] = items[i];
-				i++;
-			} else {
+			} else if (i == items.length - 1) {
+				break;
+			} else if (items[i] == null) {
 				newItems[i] = items[i + 1];
+				items[i + 1] = null;
 			}
 		}
 		items = newItems;
-		return items[index];
+		return items;
 	}
 
 	// Method to double size of itemsArray

@@ -10,17 +10,21 @@ public class CustomListApplication {
 		
 		CustomList<Integer> customList = new CustomArrayList<>();
 		
-		for(int i = 0; i < 4; i++) {
+		for(int i = 0; i < 10; i++) {
 			customList.add(i);
 		}
 		
-		customList.remove(3);
-		System.out.println(customList.get(0));
-		System.out.println(customList.get(1));
-		System.out.println(customList.get(2));
-		System.out.println(customList.get(3));
-		System.out.println(customList.get(4));
-		System.out.println(customList.get(5));
+		
+		customList.remove(9);
+		customList.remove(7);
+		customList.add(1000);
+		customList.add(7, 1001);
+
+		System.out.println(customLis);
+		
+		for(int i = 0; i < 20; i++) {
+			System.out.println(customList.get(i)); 
+		}
 
 	}
 	

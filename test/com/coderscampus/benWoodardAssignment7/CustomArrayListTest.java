@@ -10,25 +10,28 @@ class CustomArrayListTest {
 	@Test
 	void should_add_one_item_to_list() {
 		@SuppressWarnings("unchecked")
-		// Arrange
+		
 		CustomList<Integer> sut = new CustomArrayList<>();
-		// Act
-		sut.add(0);
-		// Assert
-		assertEquals(0, sut.get(0));
+		for(int i = 0; i < 10; i++) {
+			sut.add(i);
+		}
+		
+		for(int i = 0; i < 10; i++) {
+			assertEquals(i, sut.get(i));
+		}
 	}
 
 	@Test
-	void should_add_21_items_to_list() {
+	void should_add_51_items_to_list() {
 		@SuppressWarnings("unchecked")
 		// Arrange
 		CustomList<Integer> sut = new CustomArrayList<>();
 		// Act
-		for (int i = 0; i < 21; i++) {
+		for (int i = 0; i < 51; i++) {
 			sut.add(i);
 		}
 		// Assert
-		for (int i = 0; i < 21; i++) {
+		for (int i = 0; i < 51; i++) {
 			assertEquals(i, sut.get(i));
 		}
 	}
