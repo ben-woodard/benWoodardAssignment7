@@ -1,11 +1,8 @@
 package com.coderscampus.benWoodardAssignment7;
 
-import java.lang.reflect.Array;
-
 public class CustomArrayList<T> implements CustomList {
 
 	Object[] items = new Object[10];
-	Object[] newItems = new Object[items.length];
 	private int size = 0;
 
 	@Override
@@ -18,13 +15,13 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public boolean add(int index, Object item) throws IndexOutOfBoundsException {
-		size += 1;
-		if
+		doubleArrayLength();
 		if (items[index] != null) {
 			shiftArrayToRightAtIndex(index, item);
 		} else {
 			items[index] = item;
 		}
+		size++;
 		return true;
 	}
 
@@ -41,17 +38,18 @@ public class CustomArrayList<T> implements CustomList {
 	@Override
 	public Object remove(int index) throws IndexOutOfBoundsException {
 		items[index] = null;
-		adjustForNull(index);	
-		size -= 1;
+		adjustForNull(index);
+		size--;
 		return items[index];
 	}
 
-	//adjusting for null values in remove method
-	private Object adjustForNull(int index) {
+	// adjusting for null values in remove method
+	private void adjustForNull(int index) {
+		Object[] newItems = new Object[items.length];
 		for (int i = 0; i < items.length; i++) {
 			if (i < index) {
 				newItems[i] = items[i];
-			} else if (i == items.length - 1) {
+			} else if (i == items.length - 1 && items[i] == null) {
 				break;
 			} else if (items[i] == null) {
 				newItems[i] = items[i + 1];
@@ -59,40 +57,32 @@ public class CustomArrayList<T> implements CustomList {
 			}
 		}
 		items = newItems;
-		return items;
 	}
 
 	// Method to double size of itemsArray
-	private Object[] doubleArrayLength() {
-		if (items.length == size) {
-			Object[] newArray = new Object[items.length * 2];
-			int i = 0;
-			for (Object element : items) {
-				newArray[i] = items[i];
-				i++;
+	private void doubleArrayLength() {
+		if (size == items.length) {
+			Object[] newItems = new Object[items.length * 2];
+			for (int i = 0; i < items.length; i++) {
+				newItems[i] = items[i];
 			}
-			items = newArray;
-			return items;
-		} else {
-			return items;
+			items = newItems;
 		}
 	}
 
 	// Method to shift elements to right with index >= index parameter
 	private void shiftArrayToRightAtIndex(int index, Object item) {
-		int i = 0;
-		while (items[i] != null) {
-			if (i == index) {
-				newItems[i + 1] = items[i];
-				newItems[i] = item;
-			} else if (i < index) {
+		Object[] newItems = new Object[items.length];
+		for (int i = items.length - 1; i >= 0; i--) {
+			if (i < index) {
 				newItems[i] = items[i];
-			} else {
-				newItems[i + 1] = items[i];
+			} else if (i == index) {
+				newItems[i] = item;
+			} else if (i > index) {
+				newItems[i] = items[i - 1];
 			}
-			i++;
 		}
 		items = newItems;
 	}
-
+	
 }
