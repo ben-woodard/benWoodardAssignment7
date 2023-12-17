@@ -84,5 +84,5 @@ public class CustomArrayList<T> implements CustomList {
 		}
 		items = newItems;
 	}
-	
+
 }
