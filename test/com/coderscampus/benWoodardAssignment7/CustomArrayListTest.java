@@ -86,6 +86,19 @@ class CustomArrayListTest {
 		assertThrows(IndexOutOfBoundsException.class, () -> sut.add(20, 1));
 	}
 
+	//Testing get method
+	@Test
+	void should_return_item_at_index () {
+		CustomList<Integer> sut = new CustomArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			sut.add(i);
+		}
+		
+		assertEquals(5, sut.get(5));
+	}
+	
+	
+	
 	// Testing getSize Method
 
 	@Test

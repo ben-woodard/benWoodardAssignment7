@@ -15,7 +15,7 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public boolean add(int index, Object item) throws IndexOutOfBoundsException {
-		if (index > items.length - 1 || index < items.length) {
+		if (index > items.length - 1 || index < 0) {
 			throw new IndexOutOfBoundsException();
 		} else {
 			doubleArrayLength();
@@ -36,7 +36,7 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public Object get(int index) throws IndexOutOfBoundsException {
-		if (index > items.length - 1 || index < items.length) {
+		if (index > items.length - 1 || index < 0) {
 			throw new IndexOutOfBoundsException();
 		} else {
 			return items[index];
@@ -45,7 +45,7 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public Object remove(int index) throws IndexOutOfBoundsException {
-		if (index > items.length - 1 || index < items.length) {
+		if (index > items.length - 1 || index < 0) {
 			throw new IndexOutOfBoundsException();
 		} else {
 			items[index] = null;
