@@ -15,14 +15,18 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public boolean add(int index, Object item) throws IndexOutOfBoundsException {
-		doubleArrayLength();
-		if (items[index] != null) {
-			shiftArrayToRightAtIndex(index, item);
+		if (index > items.length - 1) {
+			throw new IndexOutOfBoundsException();
 		} else {
-			items[index] = item;
+			doubleArrayLength();
+			if (items[index] != null) {
+				shiftArrayToRightAtIndex(index, item);
+			} else {
+				items[index] = item;
+			}
+			size++;
+			return true;
 		}
-		size++;
-		return true;
 	}
 
 	@Override
@@ -32,15 +36,23 @@ public class CustomArrayList<T> implements CustomList {
 
 	@Override
 	public Object get(int index) throws IndexOutOfBoundsException {
-		return items[index];
+		if (index > items.length - 1) {
+			throw new IndexOutOfBoundsException();
+		} else {
+			return items[index];
+		}
 	}
 
 	@Override
 	public Object remove(int index) throws IndexOutOfBoundsException {
-		items[index] = null;
-		adjustForNull(index);
-		size--;
-		return items[index];
+		if (index > items.length - 1) {
+			throw new IndexOutOfBoundsException();
+		} else {
+			items[index] = null;
+			adjustForNull(index);
+			size--;
+			return items[index];
+		}
 	}
 
 	// adjusting for null values in remove method
