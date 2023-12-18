@@ -3,17 +3,16 @@ package com.coderscampus.benWoodardAssignment7;
 public class CustomListApplication {
 
 	public static void main(String[] args) {
-		
-		
+
 		@SuppressWarnings("unchecked")
 		CustomList<Integer> customList = new CustomArrayList<>();
-		
-		for(int i = 0; i < 10; i++) {
+
+		for (int i = 0; i < 10; i++) {
 			customList.add(i);
 		}
-		
-		System.out.println(customList.get(10));
-		
+
+		System.out.println(customList.get(-1));
+
 // 		customList.remove(9);
 //		customList.remove(7);
 //		customList.add(1000);
@@ -29,5 +28,4 @@ public class CustomListApplication {
 //			System.out.println(customList.get(i));
 //		}
 	}
-	}
-
+}

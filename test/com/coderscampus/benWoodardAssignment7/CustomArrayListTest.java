@@ -10,16 +10,16 @@ class CustomArrayListTest {
 	@Test
 	void should_add_10_items_to_list_and_list_size_not_doubled() {
 		@SuppressWarnings("unchecked")
-		
+
 		CustomList<Integer> sut = new CustomArrayList<>();
-		for(int i = 0; i < 10; i++) {
+		for (int i = 0; i < 10; i++) {
 			sut.add(i);
 		}
-		
-		for(int i = 0; i < 10; i++) {
+
+		for (int i = 0; i < 10; i++) {
 			assertEquals(i, sut.get(i));
 		}
-		assertThrows(IndexOutOfBoundsException.class, ()-> sut.get(10));
+		assertThrows(IndexOutOfBoundsException.class, () -> sut.get(10));
 	}
 
 	@Test
@@ -36,22 +36,21 @@ class CustomArrayListTest {
 			assertEquals(i, sut.get(i));
 		}
 	}
-	
-	@Test 
-	void should_shift_null_values_to_end_of_array () {
+
+	@Test
+	void should_shift_null_values_to_end_of_array() {
 		@SuppressWarnings("unchecked")
 		CustomList<Integer> sut = new CustomArrayList<>();
 		for (int i = 0; i < 8; i++) {
 			sut.add(i);
 		}
-		
+
 		sut.add(1000);
 		assertEquals(1000, sut.get(8));
 		assertEquals(null, sut.get(9));
 
 	}
-	
-	
+
 	// Testing add(index, item) method
 
 	@Test
@@ -78,7 +77,7 @@ class CustomArrayListTest {
 
 		assertEquals(2, sut.get(3));
 	}
-	
+
 	@Test
 	void should_throw_exception_for_item_added_out_of_bounds() {
 		@SuppressWarnings("unchecked")
@@ -128,5 +127,5 @@ class CustomArrayListTest {
 
 		assertThrows(IndexOutOfBoundsException.class, () -> sut.remove(12));
 	}
-	
+
 }
