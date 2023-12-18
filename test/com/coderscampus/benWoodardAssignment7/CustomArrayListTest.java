@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 class CustomArrayListTest {
 
 	// Testing add(index) method
+
 	@Test
 	void should_add_10_items_to_list_and_list_size_not_doubled() {
 		@SuppressWarnings("unchecked")
@@ -86,19 +87,17 @@ class CustomArrayListTest {
 		assertThrows(IndexOutOfBoundsException.class, () -> sut.add(20, 1));
 	}
 
-	//Testing get method
+	// Testing get method
 	@Test
-	void should_return_item_at_index () {
+	void should_return_item_at_index() {
 		CustomList<Integer> sut = new CustomArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			sut.add(i);
 		}
-		
+
 		assertEquals(5, sut.get(5));
 	}
-	
-	
-	
+
 	// Testing getSize Method
 
 	@Test

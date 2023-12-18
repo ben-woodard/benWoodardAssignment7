@@ -1,5 +1,7 @@
 package com.coderscampus.benWoodardAssignment7;
 
+import java.util.Arrays;
+
 public class CustomArrayList<T> implements CustomList {
 
 	Object[] items = new Object[10];

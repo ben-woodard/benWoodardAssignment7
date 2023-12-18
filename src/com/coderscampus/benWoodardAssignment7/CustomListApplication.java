@@ -7,12 +7,11 @@ public class CustomListApplication {
 		@SuppressWarnings("unchecked")
 		CustomList<Integer> customList = new CustomArrayList<>();
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 20; i++) {
 			customList.add(i);
 		}
 
-		customList.add(2, 9);
-		
+	
 
 // 		customList.remove(9);
 //		customList.remove(7);
@@ -25,7 +24,7 @@ public class CustomListApplication {
 //		customList.add(3000);
 //	
 //	
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < 1000; i++) {
 			System.out.println(customList.get(i));
 		}
 	}
