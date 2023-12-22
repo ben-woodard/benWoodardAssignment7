@@ -59,10 +59,9 @@ class CustomArrayListTest {
 		@SuppressWarnings("unchecked")
 		CustomList<Integer> sut = new CustomArrayList<>();
 
-		sut.add(2, 2);
+		sut.add(0, 2);
 
-		assertEquals(2, sut.get(2));
-
+		assertEquals(2, sut.get(0));
 	}
 
 	@Test
